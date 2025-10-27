@@ -1,4 +1,5 @@
-<x-guest-layout>
+<x-guest-layout class="bg-blue-500">
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -30,8 +31,9 @@
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ms-2 text-sm text-gray-600">{{ __('Manter-me conectado') }}</span>
             </label>
+            
 
-            <x-primary-button>
+            <x-primary-button class="bg-blue-800 hover:bg-blue-500 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 {{ __('Entrar') }}
             </x-primary-button>
         </div>
@@ -45,7 +47,7 @@
             @endif
         -->
 
-            
+
         </div>
     </form>
 </x-guest-layout>
