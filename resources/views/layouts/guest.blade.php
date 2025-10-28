@@ -14,21 +14,28 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <!--corpo das telas de auth-->
-    <body class="font-sans text-gray-900 antialiased ">
-        <!--background  style="background-image: url('/images/teste_background.png'); background-size: cover; background-position: center;" imagem em public-->
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 bg-blue-200 sm:pt-0">
-          
-        <!--aqui esta setando o css da logo para a navegation
-            <div>  
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>-->
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 h-full w-full bg-blue-900 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-15 border border-gray-100 shadow-md overflow-hidden sm:rounded-lg">
+    <!--corpo das telas de auth-->
+    <body class="font-sans text-gray-900 antialiased">
+        <div class="min-h-screen flex flex-col justify-center items-center bg-blue-200 bg-cover bg-center"
+            style="background-image: url('{{ asset('images/4879.jpg') }}');">
+
+            <!-- Logo -->
+            <div class="mb-6 mt-6 flex justify-center">
+                <img
+                    src="{{ asset('images/target_logo.png') }}"
+                    alt="Logo da Target"
+                    class="h-28 w-auto drop-shadow-2xl transition-all duration-300"
+                >
+            </div>
+
+
+            <!-- Card de Login -->
+            <div class="w-full sm:max-w-md px-6 py-4 bg-blue-900/20 border border-blue-300 rounded-lg shadow-lg backdrop-blur-sm">
                 {{ $slot }}
             </div>
+
         </div>
     </body>
+
 </html>
