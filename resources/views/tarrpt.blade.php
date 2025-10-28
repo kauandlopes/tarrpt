@@ -14,54 +14,44 @@
     <!-- CSS e JS compilados pelo Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-blue-100 font-sans text-gray-900 antialiased">
-
+<body class="min-h-screen flex flex-col bg-blue-200 bg-cover bg-center " style="background-image: url('{{ asset('images/4879.jpg') }}');" >
+    <!--class="w-full sm:max-w-md px-6 py-4 bg-blue-900/20 border border-blue-300 rounded-lg shadow-lg backdrop-blur-sm-->
     <header>
         <x-navbar />
     </header>
 
     <main>
-        <form>
-            <div style="display: flex; gap: 20px;">
-                <!-- Cliente -->
-                <div style="display: flex; flex-direction: column;">
-                    <label>Cliente:</label>
-                    <textarea rows="2" cols="15"></textarea>
-                </div>
+        <form >
+            <div style="display: flex; margin-right: 20%; margin-top: 20px;">
 
-                <!-- Versão -->
-                <div style="display: flex; flex-direction: column;">
+                <!-- Versão -->   
+                <div style="display: flex; flex-direction: column; ">
                     <label>Versão:</label>
-                    <textarea rows="1" cols="10"></textarea>
+                    <input type="number" style="border-radius: 15px; width: 100%; height:50%" rows="1" min="0" cols="10"></input>
                 </div>
-
-                <!-- Data -->
-                <div style="display: flex; flex-direction: column;">
-                    <label>Data:</label>
-                    <textarea rows="1" cols="10"></textarea>
-                </div>
-
-                <!-- Endereço -->
-                <div style="display: flex; flex-direction: column;">
-                    <label>Endereço:</label>
-                    <textarea rows="2" cols="15"></textarea>
+                <!-- Cliente -->
+                <div style="display: flex; flex-direction: column; ">
+                    <label>Cliente:</label>
+                    <input style="border-radius: 15px; width: 100%; height:50%" rows="2" cols="15" ></input>
                 </div>
 
                 <!-- Tela -->
                 <div style="display: flex; flex-direction: column;">
                     <label>Tela:</label>
-                    <textarea rows="1" cols="10"></textarea>
+                    <input style="border-radius: 25px; width: 100%; height:50%" rows="1" cols="10"></input>
                 </div>
 
                 <!-- Segmento -->
                 <div style="display: flex; flex-direction: column;">
                     <label>Segmento:</label>
-                    <textarea rows="1" cols="10"></textarea>
+                    <input style="border-radius: 25px; width: 255%; height:50%" type="number" min="1" max="27" ></input>
                 </div>
             </div>
+
+            <div style="display: flex; justify-content: center; margin-right: 8.5%; gap: 10px;">
+            </div>
+
         </form>
-
     </main>
-
 </body>
 </html>
