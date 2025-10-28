@@ -14,7 +14,7 @@
     <!-- CSS e JS compilados pelo Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen flex flex-col bg-blue-200 bg-cover bg-center " style="background-image: url('{{ asset('images/4879.jpg') }}');" >
+<body class="min-h-screen flex flex-col bg-blue-200 bg-cover bg-center " style="background-image: url('{{ asset('images/4879.jpg') }}') bg-blue-900;" >
     <!--class="w-full sm:max-w-md px-6 py-4 bg-blue-900/20 border border-blue-300 rounded-lg shadow-lg backdrop-blur-sm-->
     <header>
         <x-navbar />
@@ -22,10 +22,10 @@
 
     <main>
         <form >
-            <div style="display: flex; margin-right: 20%; margin-top: 20px;">
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
 
                 <!-- Versão -->   
-                <div style="display: flex; flex-direction: column; ">
+                <div style="display: flex; flex-direction: column; margin-left: 3%; ">
                     <label>Versão:</label>
                     <input type="number" style="border-radius: 15px; width: 100%; height:50%" rows="1" min="0" cols="10"></input>
                 </div>

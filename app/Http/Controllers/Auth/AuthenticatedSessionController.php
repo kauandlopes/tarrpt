@@ -44,4 +44,17 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+    
+    protected function authenticated($request, $user)
+    {
+        if ($user->time === 'd') {
+            return redirect('/tarrpt_up');
+        }
+
+        if ($user->time === 's') {
+            return redirect('/tarrpt');
+        }
+
+        return redirect('/home'); // fallback padrão
+    }
 }

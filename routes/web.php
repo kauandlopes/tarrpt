@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::middleware("guest")->group(function () {
@@ -11,15 +12,26 @@ Route::middleware("guest")->group(function () {
 });
 
 Route::middleware("auth")->group(function () {
-
     Route::get('/tarrpt', function(){
-        return view('tarrpt');
-    })->name("dashboard"); //<---retorno depois do login que estava dando erro
+        $user=auth::user();
+        if(!$user){
+            return view('/login');
+        }
+        if($user->time=='D'){
+            return view('/tarrpt_dev');
+        }
+        elseif($user->time=='S'){
+            return view('/tarrpt');
+        }
+        else{
+            return redirect ('/logout');
+        }})->name("dashboard"); //<---retorno depois do login que estava dando erro
 
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-            ->name('logout');
+        Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+                ->name('logout');
+    });
 
-});
 
+Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 require __DIR__.'/auth.php';
