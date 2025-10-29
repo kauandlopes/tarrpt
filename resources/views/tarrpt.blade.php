@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'TarRPT') }}</title>
+    <title>TarRPT</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -27,25 +27,31 @@
                 <!-- Versão -->   
                 <div style="display: flex; flex-direction: column; margin-left: 3%; ">
                     <label>Versão:</label>
-                    <input type="number" style="border-radius: 15px; width: 100%; height:50%" rows="1" min="0" cols="10"></input>
+                    <input type="text" name="versao" placeholder="Digite a Versão" style="border-radius: 15px; width: 100%; height:50%" rows="1" min="0" cols="10"></input>
                 </div>
                 <!-- Cliente -->
                 <div style="display: flex; flex-direction: column; ">
                     <label>Cliente:</label>
-                    <input style="border-radius: 15px; width: 100%; height:50%" rows="2" cols="15" ></input>
+                    <input type="text" name="cliente" placeholder="Digite a Cliente" style="border-radius: 15px; width: 100%; height:50%" rows="2" cols="15" ></input>
                 </div>
 
                 <!-- Tela -->
                 <div style="display: flex; flex-direction: column;">
                     <label>Tela:</label>
-                    <input style="border-radius: 25px; width: 100%; height:50%" rows="1" cols="10"></input>
+                    <input type="text" name="tela" placeholder="Digite a Tela" style="border-radius: 25px; width: 100%; height:50%" rows="1" cols="10"></input>
                 </div>
 
                 <!-- Segmento -->
                 <div style="display: flex; flex-direction: column;">
                     <label>Segmento:</label>
-                    <input style="border-radius: 25px; width: 255%; height:50%" type="number" min="1" max="27" ></input>
+                    <input type="text" name="segmento" placeholder="Digite o Segmento" style="border-radius: 25px; width: 255%; height:50%" type="number" min="1" max="27" ></input>
                 </div>
+
+
+
+
+
+
             </div>
 
             <div style="display: flex; justify-content: center; margin-right: 8.5%; gap: 10px;">

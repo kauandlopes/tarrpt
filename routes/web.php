@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RptController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -9,7 +9,10 @@ Route::middleware("guest")->group(function () {
     Route::get('/', function () {
         return view('auth/login');
     });
+    
 });
+
+Route::post('/tarrpt', [RptController::class, 'store'])->name('tarrpt.store');
 
 Route::middleware("auth")->group(function () {
     Route::get('/tarrpt', function(){

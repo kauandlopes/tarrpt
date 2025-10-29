@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'TarRPT') }}</title>
+    <title>TARRPT</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -19,41 +19,53 @@
         <x-navbar />
     </header>
 
-    <main>
-        <form class="width: 100px; background-color: rgb(96 139 168 / 0.2); border: 2px solid rgb(96 139 168); border-radius: 5px;">
-            <div>    
-                <!--Versão-->
-                <div style="display: flex; flex-direction: column;" >
-                    <label>Versão:</label>
-                    <input></input>
-                </div>
+    <main style="display: flex; flex-direction: center; justify-content: center;" >
 
-                <!--Cliente-->
-                <div style="display: flex; flex-direction: column;">
-                    <label>Cliente:</label>
-                    <input></input>
-                </div>
-
-                <!--Tela-->
-                <div style="display: flex; flex-direction: column;">
-                    <label>Tela:</label>
-                    <input></input>
-                </div>
-
-                <!--Segmento-->
-                <div style="display: flex; flex-direction: column;">
-                    <label>Segmento:</label>
-                    <input></input>
-                </div>
-
-                <!--Endereço URL-->
-                <div style="display: flex; flex-direction: column;">
-                    <label>Endereço URL:</label>
-                    <input></input>
-                </div>
-
-                <button style="background: green;">Enviar Arquivo</button>
+         <form action="{{ route('tarrpt.store') }}" method="POST">
+            @csrf
+            <!-- Versão -->
+            <div style="display: flex; flex-direction: column;">
+                <label>Versão:</label>
+                <input type="text" name="versao" placeholder="Versão" required>
             </div>
+
+             <!-- Segmento -->
+            <div style="display: flex; flex-direction: column;">
+                <label>Segmento:</label>
+                <input type="text" name="segmento" placeholder="Segmento" required>
+            </div>
+
+             <!-- Tela -->
+            <div style="display: flex; flex-direction: column;">
+                <label>Tela:</label>
+                <input type="text" name="tela" placeholder="Tela" required>
+            </div>
+
+             <!-- Data -->
+            <div style="display: flex; flex-direction: column;">
+                <label>Data:</label>
+                <input type="text" name="data" placeholder="Data">
+            </div>
+
+             <!-- Hora -->
+            <div style="display: flex; flex-direction: column;">
+                <label>Hora:</label>
+                <input type="text" name="hora" placeholder="Hora">
+            </div>
+
+             <!-- Cliente 
+            <div style="display: flex; flex-direction: column;">
+                <label>Cliente:</label>
+                <input type="text" name="cliente" placeholder="Cliente">
+            </div>-->
+
+             <!-- Endereço URL -->
+            <div style="display: flex; flex-direction: column;">
+                <label>Endereço URL:</label>
+                <input type="text" name="endereco" placeholder="Endereço URL">
+            </div>
+
+             <button>Salvar</button>
         </form>
     </main>
 </body>
