@@ -9,13 +9,15 @@ Route::middleware("guest")->group(function () {
     Route::get('/', function () {
         return view('auth/login');
     });
-    
 });
 
 Route::post('/tarrpt', [RptController::class, 'store'])->name('tarrpt.store');
 
+
 Route::middleware("auth")->group(function () {
+    
     Route::get('/tarrpt', function(){
+        
         $user=auth::user();
         if(!$user){
             return view('/login');
@@ -28,7 +30,7 @@ Route::middleware("auth")->group(function () {
         }
         else{
             return redirect ('/logout');
-        }})->name("dashboard"); //<---retorno depois do login que estava dando erro
+        }})->name("tarrpt.index"); //<---retorno depois do login que estava dando erro
 
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
