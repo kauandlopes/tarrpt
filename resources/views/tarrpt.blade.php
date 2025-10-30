@@ -30,21 +30,21 @@
                            class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                            value="{{ request('versao') }}">
                 </div>
-                
+                 
                 <div class="flex flex-col min-w-[150px] mb-4">
                     <label class="font-semibold text-white mb-1">Cliente:</label>
                     <input type="text" name="cliente" placeholder="Digite o Cliente" 
                            class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                            value="{{ request('cliente') }}">
                 </div>
-                
+
                 <div class="flex flex-col min-w-[150px] mb-4">
                     <label class="font-semibold text-white mb-1">Tela:</label>
                     <input type="text" name="tela" placeholder="Digite a Tela" 
                            class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                            value="{{ request('tela') }}">
                 </div>
-                
+
                 <div class="flex flex-col min-w-[150px] mb-4">
                     <label class="font-semibold text-white mb-1">Segmento:</label>
                     <input type="number" name="segmento" placeholder="Digite o Segmento" min="1" max="27"

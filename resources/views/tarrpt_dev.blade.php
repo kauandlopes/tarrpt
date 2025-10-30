@@ -33,13 +33,13 @@
                       <!-- Segmento -->
                     <div style="display: flex; flex-direction: column;">
                         <label>Segmento:</label>
-                        <input type="text" name="segmento" placeholder="Segmento" required>
+                        <input type="text" name="segmento" placeholder="Segmento">
                     </div>
 
                       <!-- Tela -->
                     <div style="display: flex; flex-direction: column;">
                         <label>Tela:</label>
-                        <input type="text" name="tela" placeholder="Tela" required>
+                        <input type="text" name="tela" placeholder="Tela">
                     </div>
 
                       <!-- Data -->

@@ -10,8 +10,21 @@ class RptController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(){
-        $rpt = Tarrpt::paginate(10); // ✅ método links $rpt
+    public function index(Request $request){
+        
+        $query = Tarrpt::query();
+
+        $query->orderByRaw('CAST(versao AS UNSIGNED) ASC'); //para ordenar a versao
+    
+        if($request->filled("versao")){
+            $query->where('versao', 'like', $request->versao );
+            if($request->filled('cliente')){
+                $query->where('cliente', $request->cliente);
+            }
+        }
+
+
+        $rpt = $query->paginate(10)->withQueryString(); 
         return view('tarrpt', compact('rpt'));
     }
 
@@ -28,8 +41,8 @@ class RptController extends Controller
     public function store(Request $request){
         $request->validate([
             'versao'   => 'required|numeric',
-            'tela'     => 'required|string',
-            'segmento' => 'required|string',
+            'tela'     => 'nullable|string',
+            'segmento' => 'nullable|string',
             'data'     => 'nullable|date',
             'hora'     => 'nullable|string',
             'endereco' => 'nullable|string',

@@ -20,7 +20,7 @@
                     <tbody class="divide-y divide-gray-200"> <!-- conteudo da tabela-->
                         @foreach($rpt as $item)
                             <tr class="hover:bg-gray-400">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $item->id }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $item->versao }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $item->versao }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $item->cliente }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $item->segmento }}</td>
