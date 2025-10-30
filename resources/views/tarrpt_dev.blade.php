@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>TarRPT</title>
+    <title>TARRPT</title>
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+    <!-- CSS e JS compilados pelo Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen flex flex-col bg-blue-900 bg-cover bg-center" style="background-image: url('{{ asset('images/4879.jpg') }}')" >
+<body class="bg-blue-200 ">
     <header>
         <x-navbar />
     </header>
@@ -52,11 +54,11 @@
                         <input type="text" name="hora" placeholder="Hora">
                     </div>
 
-                      <!-- Cliente
+                       <!-- Cliente -->
                     <div style="display: flex; flex-direction: column;">
                         <label>Cliente:</label>
                         <input type="text" name="cliente" placeholder="Cliente">
-                    </div>-->
+                    </div>
 
                       <!-- Endereço URL -->
                     <div style="display: flex; flex-direction: column;">
@@ -64,8 +66,8 @@
                         <input type="text" name="endereco" placeholder="Endereço URL">
                     </div>
 
-                     <div class="flex flex-col justify-end">
-                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-150 h-10">
+                     <div style="display: flex; justify-content: flex-end;">
+                        <button type="submit" style="margin-top: 2%;" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-150 h-10">
                             Enviar
                         </button>
                     </div>
@@ -74,5 +76,4 @@
             <x-cards-rpt :rpt="$rpt" />
         </div>
     </main>
-</body>
 </html>

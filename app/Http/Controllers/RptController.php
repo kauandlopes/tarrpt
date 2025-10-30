@@ -33,20 +33,20 @@ class RptController extends Controller
             'data'     => 'nullable|date',
             'hora'     => 'nullable|string',
             'endereco' => 'nullable|string',
-            //'cliente'  => 'nullable|string',
+            'cliente'  => 'nullable|string',
         ]);
 
         //dd($request->all());//para teste do array que retorna
 
         //atencao, esse tarrpt so era para estar com T maisculo, mas so pega assim
-        tarrpt::create([
+        Tarrpt::create([
             'versao'   => $request->versao,
             'segmento' => $request->segmento,
             'tela'     => $request->tela,
             'data'     => $request->data,
             'hora'     => $request->hora,
             'endereco' => $request->endereco,
-            //'cliente'  => $request->cliente,
+            'cliente'  => $request->cliente,
         ]);
         return redirect()->back()->with('success', 'Nova linha adicionada na tabela RPT!');
     }

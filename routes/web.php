@@ -13,14 +13,15 @@ Route::middleware("guest")->group(function () {
 
 Route::middleware('auth')->group(function () {
 
-    // rota para listar relatórios do time 'S'
+    // rota para time 'S'
     Route::get('/tarrpt', [RptController::class, 'index'])->name('tarrpt.index');
 
-    // rota para listar relatórios do time 'D'
+    // rota para time 'D'
     Route::get('/tarrpt_dev', [AuthenticatedSessionController::class, 'devIndex'])->name('tarrpt_dev.index');
 
-    // rota para criar relatório
+    // rota para criar rpt
     Route::post('/tarrpt', [RptController::class, 'store'])->name('tarrpt.store');
+
 
     // logout
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

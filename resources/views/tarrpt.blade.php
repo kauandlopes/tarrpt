@@ -24,29 +24,40 @@
             <form method="GET" action="{{ route('tarrpt.index') }}">
                 @csrf
 
-                <div class="flex flex-col flex-grow min-w-[150px]">
+                <div class="flex flex-col min-w-[150px] mb-4">
                     <label class="font-semibold text-white mb-1">Versão:</label>
-                    <input type="text" name="versao" placeholder="Digite a Versão" class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="{{ request('versao') }}">
+                    <input type="text" name="versao" placeholder="Digite a Versão" 
+                           class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                           value="{{ request('versao') }}">
                 </div>
-                <div class="flex flex-col flex-grow min-w-[150px]">
+                
+                <div class="flex flex-col min-w-[150px] mb-4">
                     <label class="font-semibold text-white mb-1">Cliente:</label>
-                    <input type="text" name="cliente" placeholder="Digite o Cliente" class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="{{ request('cliente') }}">
+                    <input type="text" name="cliente" placeholder="Digite o Cliente" 
+                           class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                           value="{{ request('cliente') }}">
                 </div>
-                <div class="flex flex-col flex-grow min-w-[150px]">
+                
+                <div class="flex flex-col min-w-[150px] mb-4">
                     <label class="font-semibold text-white mb-1">Tela:</label>
-                    <input type="text" name="tela" placeholder="Digite a Tela" class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="{{ request('tela') }}">
+                    <input type="text" name="tela" placeholder="Digite a Tela" 
+                           class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                           value="{{ request('tela') }}">
                 </div>
-                <div class="flex flex-col flex-grow min-w-[150px]">
+                
+                <div class="flex flex-col min-w-[150px] mb-4">
                     <label class="font-semibold text-white mb-1">Segmento:</label>
-                    <input type="number" name="segmento" placeholder="Digite o Segmento" min="1" max="27" class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500" value="{{ request('segmento') }}">
+                    <input type="number" name="segmento" placeholder="Digite o Segmento" min="1" max="27"
+                           class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                           value="{{ request('segmento') }}">
                 </div>
 
-                <div class="flex flex-col justify-end items-end h-16">
+
+                <div styles="display: flex; justify-content: center;" class="flex flex-col justify-end items-end h-16">
                     <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-150 h-10">
                         Buscar
                     </button>
                 </div>
-
             </form>
             <x-cards-rpt :rpt="$rpt" />
         </div>
