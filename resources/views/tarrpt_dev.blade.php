@@ -22,7 +22,7 @@
     <main class="p-6">
         <div class="max-w-7xl mx-auto bg-white/10 p-6 rounded-xl shadow-2xl backdrop-blur-sm border border-white/20">
 
-                <form action="{{ route('tarrpt.store') }}" method="POST">
+                <form action="{{ route('tarrpt.store') }}" method="POST" enctype="multipart/form-data" >
                     @csrf
                     <!-- Versão -->
                     <div style="display: flex; flex-direction: column;">
@@ -62,8 +62,8 @@
 
                       <!-- Endereço URL -->
                     <div style="display: flex; flex-direction: column;">
-                        <label>Endereço URL:</label>
-                        <input type="text" name="endereco" placeholder="Endereço URL">
+                        <label for="file">Escolha o arquivo:</label>
+                        <input type="file" name="file" id="file" required>
                     </div>
 
                      <div style="display: flex; justify-content: flex-end;">

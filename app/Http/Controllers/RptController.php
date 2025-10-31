@@ -11,11 +11,11 @@ class RptController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request){
-        
+
         $query = Tarrpt::query();
 
         $query->orderByRaw('CAST(versao AS UNSIGNED) ASC'); //para ordenar a versao
-    
+
         if($request->filled("versao")){
             $query->where('versao', 'like', $request->versao );
             if($request->filled('cliente')){
@@ -24,7 +24,7 @@ class RptController extends Controller
         }
 
 
-        $rpt = $query->paginate(10)->withQueryString(); 
+        $rpt = $query->paginate(10)->withQueryString();
         return view('tarrpt', compact('rpt'));
     }
 
@@ -39,13 +39,20 @@ class RptController extends Controller
     }
 
     public function store(Request $request){
+
+         $request->validate([
+            'file' => 'required|mimes:jpg,jpeg,png,pdf|max:2048',
+        ]);
+
+        $path = $request->file('file')->store('uploads', 'public'); //up pasta public
+
         $request->validate([
             'versao'   => 'required|numeric',
             'tela'     => 'nullable|string',
             'segmento' => 'nullable|string',
             'data'     => 'nullable|date',
             'hora'     => 'nullable|string',
-            'endereco' => 'nullable|string',
+            'endereco' => $path,
             'cliente'  => 'nullable|string',
         ]);
 
