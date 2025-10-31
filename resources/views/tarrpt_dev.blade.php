@@ -27,7 +27,7 @@
                     <!-- Versão -->
                     <div style="display: flex; flex-direction: column;">
                         <label>Versão:</label>
-                        <input type="text" name="versao" placeholder="Versão" required>
+                        <input type="text" name="versao" placeholder="Versão">
                     </div>
 
                       <!-- Segmento -->

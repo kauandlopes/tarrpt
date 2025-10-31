@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 
 use App\Models\Tarrpt;
 use Illuminate\Http\Request;
@@ -10,30 +11,38 @@ class RptController extends Controller
     /**
      * Display a listing of the resource.
      */
-     public function index(Request $request){
-        $query = Tarrpt::query()
-            ->when($request->versao, function ($q, $versao) {
-                $q->where('versao', 'like', "%{$versao}%");
-            })
-            ->when($request->filled('cliente'), function ($q) {
-                $q->whereNotNull('cliente')
-                ->where('cliente', '!=', '');
-            })
-            
-            ->orderByRaw('CAST(versao AS UNSIGNED) ASC'); // ordenar antes de executar
+    public function index(Request $request) {
+        $rpt = DB::table("rpt")
+                ->whereNotNull("endereco")
+                ->where(function($sql) use ($request) {
 
-
-        // Aqui executa a consulta paginada
-        $rpt = $query->paginate(10)->withQueryString();
+                   //if ( ($request->versao) == null && ($request->cliente) == null && ($request->segmento) == null && ($request->tela) == null ) {
+                   //     return;
+                   // }
+                   // 
+                    if ($request->cliente) {
+                        $sql->where("cliente", $request->cliente);
+                    } else {
+                        $sql->whereNull("cliente"); //unico que pode retornar valor nulo
+                    } 
+                    if ($request->versao) {
+                        $sql->where("versao", $request->versao);
+                    } 
+                    if ($request->segmento){
+                        $sql->where("segmento", $request->segmento);
+                    }
+                    if ($request->tela) {
+                        $sql->where("tela", $request->tela);
+                    }
+                }) ->paginate(10)->withQueryString();
+        
         return view('tarrpt', compact('rpt'));
     }
 
-
-
-
-    /**
+    /*
      * Show the form for creating a new resource.
      */
+
     public function create()
     {
         //
@@ -49,7 +58,7 @@ class RptController extends Controller
             'segmento' => 'nullable|string',
             'data'     => 'nullable|date',
             'hora'     => 'nullable|string',
-            'file'     => 'required|mimes:pdf|max:2048',
+            'file'     => 'required|file',
             'cliente'  => 'nullable|string',
         ]);
 

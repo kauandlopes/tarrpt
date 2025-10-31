@@ -10,23 +10,24 @@
                 <thead class="bg-blue-500 text-white">
                     <tr> <!-- cabecalho da tabela-->
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Versão</th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Clientes</th>
+                        <!-- <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Clientes</th> -->
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Segmento</th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Tela</th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Arquivo</th> <!-- Alterado para mostrar o arquivo -->
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-200"> <!-- conteudo da tabela-->
+                <tbody class="divide-y divide-gray-100"> <!-- conteudo da tabela-->
                     @foreach($rpt as $item)
-                        <tr class="hover:bg-gray-400">
+                        <tr class="hover:bg-gray-200">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $item->versao }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $item->cliente }}</td>
+                            {{-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $item->cliente }}</td> --}}
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $item->segmento }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $item->tela }}</td>
 
                             <!-- Exibição do arquivo com base no endereço -->
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                  <a href="{{ Storage::url($item->endereco) }}" target="_blank" download class="text-blue-600 hover:text-blue-800">Baixar RPT</a>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">
+                                  <a href="{{ Storage::url($item->endereco) }}" target="_blank" style=" border-radius: 3px;" class="bg-blue-500 text-blue-100 hover:bg-blue-800">Baixar RPT</a>
+
                             </td>
                         </tr>
                     @endforeach
