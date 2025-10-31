@@ -26,8 +26,7 @@
 
                             <!-- Exibição do arquivo com base no endereço -->
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                                  <a href="{{ Storage::url($item->endereco) }}" target="_blank" class="text-blue-600 hover:text-blue-800">Visualizar ou Baixar Arquivo</a>
-
+                                  <a href="{{ Storage::url($item->endereco) }}" target="_blank" download class="text-blue-600 hover:text-blue-800">Baixar RPT</a>
                             </td>
                         </tr>
                     @endforeach

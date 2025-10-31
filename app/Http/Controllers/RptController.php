@@ -10,23 +10,24 @@ class RptController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request){
+     public function index(Request $request){
+        $query = Tarrpt::query()
+            ->when($request->versao, function ($q, $versao) {
+                $q->where('versao', 'like', "%{$versao}%");
+            })
+            ->when($request->filled('cliente'), function ($q) {
+                $q->whereNotNull('cliente')
+                ->where('cliente', '!=', '');
+            })
+            
+            ->orderByRaw('CAST(versao AS UNSIGNED) ASC'); // ordenar antes de executar
 
-        $query = Tarrpt::query();
 
-        $query->orderByRaw('CAST(versao AS UNSIGNED) ASC'); //para ordenar a versao
-
-        if($request->filled("versao")){
-            $query->where('versao', 'like', $request->versao );
-            if($request->filled('cliente')){
-                $query->where('cliente', $request->cliente);
-            }
-        }
-
-
+        // Aqui executa a consulta paginada
         $rpt = $query->paginate(10)->withQueryString();
         return view('tarrpt', compact('rpt'));
     }
+
 
 
 
@@ -40,10 +41,6 @@ class RptController extends Controller
 
     public function store(Request $request){
 
-         $request->validate([
-            'file' => 'required|mimes:jpg,jpeg,png,pdf|max:2048',
-        ]);
-
         $path = $request->file('file')->store('uploads', 'public'); //up pasta public
 
         $request->validate([
@@ -52,7 +49,7 @@ class RptController extends Controller
             'segmento' => 'nullable|string',
             'data'     => 'nullable|date',
             'hora'     => 'nullable|string',
-            'endereco' => $path,
+            'file'     => 'required|mimes:pdf|max:2048',
             'cliente'  => 'nullable|string',
         ]);
 
@@ -65,7 +62,7 @@ class RptController extends Controller
             'tela'     => $request->tela,
             'data'     => $request->data,
             'hora'     => $request->hora,
-            'endereco' => $request->endereco,
+            'endereco' => $path, //up pasta public
             'cliente'  => $request->cliente,
         ]);
         return redirect()->back()->with('success', 'Nova linha adicionada na tabela RPT!');
