@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- CSS e JS compilados pelo Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-blue-200 ">
@@ -30,14 +29,14 @@
                         <input type="text" name="versao" placeholder="Versão">
                     </div>
 
-                    <!-- Segmento - AGORA COM DROPDOWN -->
+                    <!-- Segmento -->
                     <div style="display: flex; flex-direction: column;">
                         <label>Segmento:</label>
                         <select name="segmento" class="form-select">
                             <option value="">Selecione um segmento</option>
-                            @foreach($segmentos as $key => $value)
+                            {{-- @foreach($segmentos as $key => $value)
                                 <option value="{{ $key }}">{{ $value }}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                     </div>
 

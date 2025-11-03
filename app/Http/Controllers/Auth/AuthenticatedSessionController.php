@@ -32,15 +32,15 @@ class AuthenticatedSessionController extends Controller
 
         $user = $request->user();
 
-        $tipo = strtolower($user->time);
+        //$tipo = strtolower($user->time);
 
-        if ($tipo === 'd') {
-            return redirect()->route('tarrpt_dev.index'); // ou direto /tarrpt_dev
-        }
+        // if ($tipo === 'd') {
+        //     return redirect()->route('tarrpt_dev.index'); // ou direto /tarrpt_dev
+        // }
 
-        if ($tipo === 's') {
-            return redirect()->route('tarrpt.index'); // ou direto /tarrpt
-        }
+        // if ($tipo === 's') {
+        //     return redirect()->route('tarrpt.index'); // ou direto /tarrpt
+        // }
 
         return redirect('/'); // fallback padrão
     }

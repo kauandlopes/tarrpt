@@ -5,6 +5,9 @@
                 <img src="{{ asset('images/target_logo.png') }}" alt="Logo" class="h-16 w-auto drop-shadow-md">
                 <span class="font-semibold text-lg tracking-wide"></span>
             </div>
+            @if ($time == 'D'){
+                <button> teste </button>
+            }@endif
 
             <div>
                 <form method="POST" action="{{ route('logout') }}">

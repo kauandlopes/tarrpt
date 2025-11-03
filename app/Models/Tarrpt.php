@@ -14,10 +14,9 @@ class Tarrpt extends Model {
         'data',
         'hora',
         'endereco',
-        'cliente'
+        'id_cliente'
     ];
 
-    // ✅ Opcional: Definir casts para data se quiser
     protected $casts = [
         'data' => 'date',
     ];

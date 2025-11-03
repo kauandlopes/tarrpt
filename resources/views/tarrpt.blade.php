@@ -5,16 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>TarRPT - down</title>
+    <title>
+        @if ($time == "D") Desenvolvedor @else Suporte @endif
+    </title>
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen flex flex-col bg-blue-900 bg-cover bg-center" style="background-image: url('{{ asset('images/4879.jpg') }}')" >
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <header>
-        <x-navbar />
+        <nav class="shadow-lg w-full bg-blue-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <div class="flex items-center space-x-3">
+                        <img src="{{ asset('images/target_logo.png') }}" alt="Logo" class="h-16 w-auto drop-shadow-md">
+                        <span class="font-semibold text-lg tracking-wide"></span>
+                    </div>
+                        @if ($time == 'D')
+                            <button 
+                                class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-5 rounded-md transition" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#modalDev"> 
+                                Enviar Arquivos
+                            </button>
+                        @endif
+                    <div>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button class="bg-red-700 hover:bg-red-600 text-white font-semibold py-2 px-5 rounded-md transition" data-bs-toggle="modal" data-bs-target="#meuModal ">
+                                Logout
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <main class="p-6">
@@ -62,5 +92,6 @@
             <x-cards-rpt :rpt="$rpt" />
         </div>
     </main>
+    @include('modal.modal_dev')
 </body>
 </html>
