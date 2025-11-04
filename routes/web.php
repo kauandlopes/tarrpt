@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/tarrpt', [RptController::class, 'store'] )->name('tarrpt.store');
 
     Route::post('/organizacoes', [OrganizacoesController::class, 'store'])->name('organizacoes.store');
+     Route::post('/clientes', [OrganizacoesController::class, 'store'])->name('clientes.store');
 
     // logout
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

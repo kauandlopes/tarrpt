@@ -1,28 +1,29 @@
 <main class="p-6">
-    <div class="modal fade" id="modalDev" tabindex="-1" aria-labelledby="modalDevLabel" aria-hidden="true">
+    <div class="modal fade" id="modalClientes" tabindex="-1" aria-labelledby="modalClientesLabel" aria-hidden="true">
         <div class="modal-dialog">
 
-            <form action="{{ route('tarrpt.store') }}" method="POST" enctype="multipart/form-data">
+            <!-- mudar a rota depois de criar o controller -->
+            <form action="{{ route('clientes.store') }}" method="POST" enctype="multipart/form-data"> 
                 @csrf
 
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalDevLabel">Enviar Arquivos RPTs</h5>
+                        <h5 class="modal-title" id="modalOrganizacaoLabel">Criar Cliente</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <div class="modal-body space-y-4">
 
                         <div class="flex flex-col">
-                            <label class="font-semibold mb-1">Versão:</label>
-                            <input type="text" name="versao" placeholder="Versão"
+                            <label class="font-semibold mb-1">Cliente:</label>
+                            <input type="text" name="nome" placeholder="Nome do Cliente"
                                 class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                         </div>
 
                         <div class="flex flex-col">
-                            <label class="font-semibold mb-1">Cliente:</label>
-                            <input type="text" name="id_cliente" placeholder="Cliente"
+                            <label class="font-semibold mb-1">Cnpj:</label>
+                            <input type="text" name="cnpj" placeholder="Não Obrigatorio"
                                 class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
                         </div>
 
@@ -32,17 +33,15 @@
                         </div>
 
                         <div class="flex flex-col">
-                            <label class="font-semibold mb-1">Tela:</label>
-                            <input type="text" name="tela" placeholder="Tela"
-                                class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                            <label class="font-semibold mb-1">Organização:</label>
+                            <select name="id_organizacao" class=" form-select rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="">Selecione uma Organização</option>
+                                <option value="1">ORGANIZAÇÂO X</option>
+                                <option value="2">ORGANIZAÇÂO Z</option>
+                                <option value="3">ORGANIZAÇÂO Y</option>
+                            </select>
                         </div>
-
-                        <div class="flex flex-col">
-                            <label for="file" class="font-semibold mb-1">Escolha o arquivo:</label>
-                            <input type="file" name="file" id="file" required
-                                class="form-control rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
-                        </div>
-                    </div>
+                        
 
                     <div class="modal-footer">
                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -50,9 +49,8 @@
                             Enviar
                         </button>
                     </div>
-
                 </div>
             </form>
-            </div>
+         </div>
     </div>
-    </main>
+</main>

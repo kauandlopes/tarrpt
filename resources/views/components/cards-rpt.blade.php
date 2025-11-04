@@ -29,7 +29,6 @@
                             <!-- Exibição do arquivo com base no endereço -->
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">
                                   <a href="{{ Storage::url($item->endereco) }}" target="_blank" style=" border-radius: 3px;" class="bg-blue-500 text-blue-100 hover:bg-blue-800">Baixar RPT</a>
-
                             </td>
                         </tr>
                     @endforeach

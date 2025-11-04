@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\Models\Organizacoes;
+use App\Models\Clientes;
 use Illuminate\Http\Request;
 
-class OrganizacoesController extends Controller{
+class ClientesController extends Controller{
   
     public function index(Request $request) {
 
-        $rpt = DB::table("organizacao")
+        $rpt = DB::table("cliente")
                 ->where(function($sql) use ($request) {
                     if ($request->nome) {
                         $sql->where("nome", $request->nome);
@@ -19,18 +19,16 @@ class OrganizacoesController extends Controller{
                 ->orderBy('nome', 'desc')
                 ->get();
 
-        return view('modal-criar-organizacao', compact('organizacoes'));
+        //return view('modal-criar-clientes', compact('clientes'));
     }
 
     public function store(Request $request){
-        // $request->validate([
-        //     'name'     => 'required|string',
-        //     'segmento' => 'nullable|integer',
-        // ]);
 
-        Organizacoes::create([
-            'nome'     => $request->nome,
-            'segmento' => $request->segmento, 
+        Clientes::create([
+            'cnpj'           => $request->cnpj,
+            'nome'           => $request->nome,
+            'segmento'       => $request->segmento,
+            'id_organizacao' =>$resquest->id_organizacao, 
         ]);
 
 
@@ -43,7 +41,7 @@ class OrganizacoesController extends Controller{
        //     $registro->save();
        // } 
 
-        return redirect()->back();
+        //return redirect()->back();
     }
 
 
