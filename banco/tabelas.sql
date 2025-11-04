@@ -3,12 +3,12 @@ USE tarrpt;
 CREATE TABLE organizacao(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(64),
-    segmento INT(2),
+    segmento INT(2)
 );
 
 CREATE TABLE cliente(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_organizacao INT(6),
+    id_organizacao INT,
     cnpj VARCHAR(32),
     nome VARCHAR(64),
     segmento INT(2),
@@ -18,7 +18,7 @@ CREATE TABLE cliente(
 
 CREATE TABLE rpt(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_cliente INT(6),
+    cliente VARCHAR(64),
     versao INT,
     data DATE,
     hora VARCHAR(8),

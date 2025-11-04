@@ -106,7 +106,7 @@
                     </div>
                     <div class="form-group">
                             <label class="form-label">Cliente:</label>
-                            <input type="text" name="id_cliente" placeholder="Digite o Cliente" class="form-input"
+                            <input type="text" name="cliente" placeholder="Digite o Cliente" class="form-input"
                                 value="{{ request('cliente') }}">
                         </div>
 

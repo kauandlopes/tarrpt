@@ -34,9 +34,9 @@ class RptController extends Controller
                 ->whereNotNull("endereco")
                 ->where(function($sql) use ($request) {
                     if ($request->cliente) {
-                        $sql->where("id_cliente", $request->id_cliente);
+                        $sql->where("cliente", $request->cliente);
                     } else {
-                        $sql->whereNull("id_cliente");
+                        $sql->whereNull("cliente");
                     }
                     if ($request->versao) {
                         $sql->where("versao", $request->versao);
@@ -63,7 +63,7 @@ class RptController extends Controller
             'tela'     => 'nullable|string',
             'segmento' => 'nullable|integer',
             'file'     => 'required|file',
-            'id_cliente'  => 'nullable|string',
+            'cliente'  => 'nullable|string',
         ]);
 
         $file = $request->file('file');
@@ -80,7 +80,7 @@ class RptController extends Controller
             'data'     => $dataAtual,
             'hora'     => $horaAtual,
             'endereco' => $path,
-            'cliente'  => $request->id_cliente,
+            'cliente'  => $request->cliente,
         ]);
 
         return redirect()->back()->with('success', 'Nova linha adicionada na tabela RPT!');

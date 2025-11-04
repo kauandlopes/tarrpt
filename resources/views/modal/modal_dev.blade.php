@@ -24,7 +24,7 @@
                             <label class="font-semibold mb-1">Cliente:</label>
                             <input type="text" name="id_cliente" placeholder="Cliente"
                                 class="rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
-                        </div>
+                        </div>  
 
                         <div class="flex flex-col">
                             <label class="font-semibold mb-1">Segmento:</label>

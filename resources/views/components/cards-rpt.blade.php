@@ -21,7 +21,7 @@
                     @foreach($rpt as $item)
                         <tr class="hover:bg-gray-200">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $item->versao }}</td>
-                            {{-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $item->id_cliente }}</td> --}}
+                            {{-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $item->cliente }}</td> --}}
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $item->segmento }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $item->tela }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $item->data_fmt }}</td>
