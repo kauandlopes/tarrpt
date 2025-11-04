@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RptController;
 use App\Http\Controllers\OrganizacoesController;
+use App\Http\Controllers\ClientesController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -19,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/tarrpt', [RptController::class, 'store'] )->name('tarrpt.store');
 
     Route::post('/organizacoes', [OrganizacoesController::class, 'store'])->name('organizacoes.store');
-     Route::post('/clientes', [OrganizacoesController::class, 'store'])->name('clientes.store');
+    Route::post('/clientes', [ClientesController::class, 'store'])->name('clientes.store');
 
     // logout
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

@@ -19,7 +19,7 @@ class ClientesController extends Controller{
                 ->orderBy('nome', 'desc')
                 ->get();
 
-        //return view('modal-criar-clientes', compact('clientes'));
+        return view('modal-criar-clientes', compact('clientes'));
     }
 
     public function store(Request $request){
@@ -28,7 +28,7 @@ class ClientesController extends Controller{
             'cnpj'           => $request->cnpj,
             'nome'           => $request->nome,
             'segmento'       => $request->segmento,
-            'id_organizacao' =>$resquest->id_organizacao, 
+            'id_organizacao' => $request->id_organizacao, 
         ]);
 
 
@@ -41,7 +41,7 @@ class ClientesController extends Controller{
        //     $registro->save();
        // } 
 
-        //return redirect()->back();
+        return redirect()->back();
     }
 
 

@@ -41,7 +41,6 @@
                                 <option value="3">ORGANIZAÇÂO Y</option>
                             </select>
                         </div>
-                        
 
                     <div class="modal-footer">
                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
