@@ -81,12 +81,13 @@
                         <input type="text" name="tela" placeholder="Digite a Tela" class="form-input"
                                value="{{ request('tela') }}">
                     </div>
-                    </div>
+                </div>
+
                     <div class="form-group">
-                            <label class="form-label">Cliente:</label>
-                            <input type="text" name="id_cliente" placeholder="Digite o Cliente" class="form-input"
-                                value="{{ request('cliente') }}">
-                        </div>
+                        <label class="form-label">Cliente ou Organização:</label>
+                        <input type="text" name="id_cliente" placeholder="Digite Cliente, CNPJ ou Organização" class="form-input"
+                            value="{{ request('id_cliente') }}">
+                    </div>
 
                     <div class="form-actions">
                     <button type="submit" class="btn-search">
