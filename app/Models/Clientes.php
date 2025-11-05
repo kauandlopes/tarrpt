@@ -10,16 +10,16 @@ class Clientes extends Model {
         'nome',
         'cnpj',
         'segmento',
-        'id_organizacao', // Corrigi o nome do campo (tinha acento)
+        'id_organizacao', 
     ];
 
-    // Relação: Um cliente pertence a uma organização
+    //cliente 1:1 organização
     public function organizacao()
     {
         return $this->belongsTo(Organizacoes::class, 'id_organizacao', 'id');
     }
 
-    // Relação: Um cliente tem muitos RPTs
+    // cliente 1:N  RPTs
     public function rpts()
     {
         return $this->hasMany(Tarrpt::class, 'id_cliente', 'id');

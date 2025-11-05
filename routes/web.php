@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [RptController::class, 'index'])->name('tarrpt.index');
    
     Route::post('/tarrpt', [RptController::class, 'store'] )->name('tarrpt.store');
+    
 
     Route::post('/organizacoes', [OrganizacoesController::class, 'store'])->name('organizacoes.store');
     Route::post('/clientes', [ClientesController::class, 'store'])->name('clientes.store');

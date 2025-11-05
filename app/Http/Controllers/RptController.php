@@ -18,21 +18,12 @@ class RptController extends Controller
         $rpt = DB::table("rpt")
                 ->select(
                     "rpt.*",
-                    DB::raw("DATE_FORMAT(rpt.data, '%d/%m/%Y') AS data_fmt")
+                    DB::raw("DATE_FORMAT(rpt.data, '%d/%m/%Y') AS data_fmt") //formata para ordem br
                 )
                 ->whereNotNull("endereco")
                 ->where(function($sql) use ($request) {
-
-                    if ($request->id_cliente) {
-                        $termo = $request->id_cliente;
-
-                        $query->whereHas('cliente', function($q) use ($termo) {  //tem que fazer funcionar, parece que ta certo
-                            $q->where('nome', 'LIKE', "%{$termo}%")
-                            ->orWhere('cnpj', 'LIKE', "%{$termo}%")
-                            ->orWhereHas('organizacao', function($orgQuery) use ($termo) {
-                                $orgQuery->where('nome', 'LIKE', "%{$termo}%");
-                            });
-                        });
+                    if ($request->cliente) {
+                        $sql->where("id_cliente", $request->id_cliente);
                     } else {
                         $sql->whereNull("id_cliente");
                     }
@@ -45,20 +36,6 @@ class RptController extends Controller
                     if ($request->tela) {
                         $sql->where("tela", $request->tela);
                     }
-
-
-                    // if ($request->id_cliente) {
-                    //     $termo = $request->id_cliente;
-
-                    //     $query->whereHas('cliente', function($q) use ($termo) {
-                    //         $q->where('nome', 'LIKE', "%{$termo}%")
-                    //           ->orWhere('cnpj', 'LIKE', "%{$termo}%")
-                    //           ->orWhereHas('organizacao', function($orgQuery) use ($termo) {
-                    //               $orgQuery->where('nome', 'LIKE', "%{$termo}%");
-                    //           });
-                    //     });
-                    // }
-
 
                 })
                 ->orderBy('versao', 'desc')
@@ -82,7 +59,7 @@ class RptController extends Controller
         $file = $request->file('file');
         $path = $file->store('uploads', 'public');
 
-        $dataAtual = now()->format('Y-m-d');
+        $dataAtual = now()->format('Y-m-d'); 
         $horaAtual = now()->format('H:i:s');
 
         Tarrpt::create([

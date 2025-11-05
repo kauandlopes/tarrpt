@@ -101,7 +101,7 @@
     </main>
 
     @include('modal.modal-enviar-rpt')
-    @include('modal.modal-criar-oragnizacao')
+    @include('modal.modal-criar-orgnizacao')
     @include('modal.modal-criar-cliente')
 </body>
 </html>

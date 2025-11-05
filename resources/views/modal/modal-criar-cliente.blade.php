@@ -1,3 +1,10 @@
+<head>
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+</head>
+
 <main class="p-6">
     <div class="modal fade" id="modalClientes" tabindex="-1" aria-labelledby="modalClientesLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -33,12 +40,9 @@
                         </div>
 
                         <div class="flex flex-col">
-                            <label class="font-semibold mb-1">Organização:</label>
-                            <select name="id_organizacao" class=" form-select rounded-lg p-2 text-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
-                                <option value="">Selecione uma Organização</option>
-                                <option value="1">ORGANIZAÇÂO X</option>
-                                <option value="2">ORGANIZAÇÂO Z</option>
-                                <option value="3">ORGANIZAÇÂO Y</option>
+                             <label class="font-semibold mb-1">Organização:</label>
+                            <select name="nome" id="organizacao_id" class="form-control">
+                                <option value="">Selecione a Organização</option>
                             </select>
                         </div>
 
@@ -53,3 +57,4 @@
          </div>
     </div>
 </main>
+
