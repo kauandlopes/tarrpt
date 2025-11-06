@@ -90,7 +90,7 @@
                     <div class="form-group">
                         <label class="form-label">Cliente ou Organização:</label>
                         <select name="id_cliente" id="cliente_select" placeholder="Digite o cliente ou organização" class="form-control select2">
-                            <option value="">Digite Cliente, CNPJ ou Organização</option>
+                            
                         </select>
                     </div>
 
@@ -160,6 +160,7 @@
                         };
                     },
                     processResults: function (data) {
+                        console.log(data);
                         return {
                             
                             results: data
@@ -168,6 +169,10 @@
                     cache: true
                 }
             });
+
+            $.get("{{ route('buscar.organizacoes') }}", function(resp) {
+                // console.log(resp);
+            })
 
             //  REINICIALIZAR SELECT2 QUANDO MODAL ABRIR (opcional)
             $('#modalClientes').on('shown.bs.modal', function () {
