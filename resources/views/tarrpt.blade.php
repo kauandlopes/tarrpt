@@ -119,7 +119,41 @@
     <!--  SCRIPT selct2 -->
     <script>
         $(document).ready(function() {
-            //BUSCA DE CLIENTES NO MAIN
+            $('#organizacao_id').select2({
+                // Removido o 'dropdownParent' daqui. Ele será definido no evento de abertura.
+                placeholder: "Selecione a Organização",
+                allowClear: true,
+                width: '100%',
+                ajax: {
+                    url: "{{ route('buscar.organizacoes') }}",
+                    type: "GET",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        
+                        return { q: params.term };
+                    },
+                    processResults: function (data) {
+                        // Este log SÓ é chamado se a requisição retornar 200 e JSON válido
+                        console.log('processResults - Dados Recebidos:', data); 
+                        return { results: data }; 
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Erro na requisição AJAX:', status, error, xhr.responseText);
+                    },
+                    cache: true
+                }
+            });
+
+            
+            $('#organizacao_id').on('select2:open', function (e) { //quando abrir a modal
+                $('.select2-container--open').css('z-index', 10000); 
+                let $modal = $('#modalOrganizacao'); // O seu modal
+
+                // Re-configura o dropdownParent (o container do Select2)
+                $(this).data('select2').dropdown.$dropdownParent = $modal;
+            });
+
             $('#cliente_select').select2({
                 placeholder: "Digite Cliente, CNPJ ou Organização",
                 allowClear: true,
@@ -130,55 +164,13 @@
                     dataType: 'json',
                     delay: 250,
                     data: function (params) {
-                        return {
-                            q: params.term // termo de busca
-                        };
+                        return { q: params.term };
                     },
                     processResults: function (data) {
-                        return {
-                            results: data
-                        };
+                        return { results: data };
                     },
                     cache: true
                 }
-            });
-
-            //  SELECT2 PARA ORGANIZAÇÕES NA MODAL
-            $('#organizacao_id').select2({
-                dropdownParent: $('#modalOrganizacao'), //  
-                placeholder: "Selecione a Organização",
-                allowClear: true,
-                width: '100%',
-                ajax: {
-                    url: "{{ route('buscar.organizacoes') }}",
-                    type: "GET",
-                    dataType: 'json',
-                    delay: 250,
-                    data: function (params) {
-                        return {
-                            q: params.term
-                        };
-                    },
-                    processResults: function (data) {
-                        console.log(data);
-                        return {
-                            
-                            results: data
-                        };
-                    },
-                    cache: true
-                }
-            });
-
-            $.get("{{ route('buscar.organizacoes') }}", function(resp) {
-                // console.log(resp);
-            })
-
-            //  REINICIALIZAR SELECT2 QUANDO MODAL ABRIR (opcional)
-            $('#modalClientes').on('shown.bs.modal', function () {
-                $('#organizacao_id').select2({
-                    dropdownParent: $('#modalClientes')
-                });
             });
         });
     </script>
