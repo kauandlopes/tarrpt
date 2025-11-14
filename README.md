@@ -2,3 +2,4 @@
 
 
 instalar breeze, laravel storage e bootstrap
+![5426906](https://github.com/user-attachments/assets/6038d11f-1603-4baf-a214-fbbf97e61926)
